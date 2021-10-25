@@ -45,6 +45,8 @@ public class MenuManager : MonoBehaviour
     public void ResumeGame()
     {
         Debug.Log("Resume Game");
+
+        GameManager.gamePaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
 
@@ -67,8 +69,6 @@ public class MenuManager : MonoBehaviour
 
     public void EndGame()
     {
-        FindObjectOfType<AudioManager>().Clip("GameOver").Play();
-
         scoreMenu.SetActive(true);
         scores.SetActive(false);
         gameParts.SetActive(false);

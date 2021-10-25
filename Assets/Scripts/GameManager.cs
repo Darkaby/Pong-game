@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static bool gameEnded;
+    public static bool gamePaused;
 
     public MenuManager menu;
 
@@ -19,19 +20,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameEnded = false;
+        gamePaused = false;
         score = $"{highestScore}";
-    }
-
-    private void Start()
-    {
-        //FindObjectOfType<AudioManager>().Clip("GameSound").Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !gamePaused)
         {
+            gamePaused = true;
             menu.PauseGame();
         }
 

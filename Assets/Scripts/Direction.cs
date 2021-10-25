@@ -10,6 +10,7 @@ public class Direction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Instantiate first ball");
         Invoke("ThrowBall", 1f);
     }
 
