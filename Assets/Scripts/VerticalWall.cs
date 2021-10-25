@@ -20,6 +20,7 @@ public class VerticalWall : MonoBehaviour
         score++;
         txt.text = "" + score;
 
+        FindObjectOfType<AudioManager>().Clip("BallOut").Play();
 
         // Specify the direction in which the ball goes
         direction = (gameObject.name == "WallLeft") ? true : false;
@@ -35,8 +36,8 @@ public class VerticalWall : MonoBehaviour
         // Instantiate the ball at the starting point
         if (!GameManager.gameEnded)
         {
+            Debug.Log("Instantiate ball");
             Instantiate(ball, GameObject.Find("StartPoint").GetComponent<Transform>().transform.position, Quaternion.identity);
-            FindObjectOfType<AudioManager>().Clip("BallOut").Play();
         }
             
     }
